@@ -64,8 +64,7 @@ public class LabRequestController {
     @GetMapping
     @PreAuthorize("hasAnyRole('TESTER')")
     public List<TestRequest> getForTester()  {
-        User user = userLoggedInService.getLoggedInUser();
-        return testRequestQueryService.findByTester(user);
+
         // Implement This Method
 
         // Create an object of User class and store the current logged in user first
@@ -73,8 +72,10 @@ public class LabRequestController {
         //Make use of the findByTester() method from testRequestQueryService class
         // For reference check the method getForTests() method from LabRequestController class
 
-//        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented"); // replace this line with your code
-//
+//        This will show the list of test request assigned to current Tester
+
+        User tester = userLoggedInService.getLoggedInUser();
+        return testRequestQueryService.findByTester(tester);
 
     }
 

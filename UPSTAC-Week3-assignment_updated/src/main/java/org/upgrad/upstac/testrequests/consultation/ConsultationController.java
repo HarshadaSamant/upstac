@@ -53,8 +53,6 @@ public class ConsultationController {
     public List<TestRequest> getForConsultations()  {
 
         // Implement this method
-       List<TestRequest> result = testRequestQueryService.findBy(RequestStatus.LAB_TEST_COMPLETED);
-        return result;
 
 
         //Implement this method to get the list of test requests having status as 'LAB_TEST_COMPLETED'
@@ -62,9 +60,11 @@ public class ConsultationController {
         //return the result
         // For reference check the method getForTests() method from LabRequestController class
 
-        // replace this line of code with your implementation
-//        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
 
+//        This will show the list of test requests with status LAB_TEST_COMPLETED
+
+        List<TestRequest> result = testRequestQueryService.findBy(RequestStatus.LAB_TEST_COMPLETED);
+        return result;
 
     }
 
@@ -79,8 +79,7 @@ public class ConsultationController {
         //Make use of the findByDoctor() method from testRequestQueryService class to get the list
         // For reference check the method getForTests() method from LabRequestController class
 
-        // replace this line of code with your implementation
-//        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+//        This will show the list of test requests for the current Doctor
 
         User doctor = userLoggedInService.getLoggedInUser();
         return testRequestQueryService.findByDoctor(doctor);
@@ -103,8 +102,7 @@ public class ConsultationController {
         // return the above created object
         // For reference check the method assignForLabTest() method from LabRequestController class
         try {
-            // replace this line of code with your implementation
-//            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+//            This will assign the test request to the current logged in Doctor
             User doctor = userLoggedInService.getLoggedInUser();
             TestRequest testRequest = testRequestUpdateService.assignForConsultation(id,doctor);
             return testRequest;
@@ -128,10 +126,8 @@ public class ConsultationController {
         // For reference check the method updateLabTest() method from LabRequestController class
 
         try {
-            // replace this line of code with your implementation
-//            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+//            This will update the consultation by current logged in Doctor
             User doctor = userLoggedInService.getLoggedInUser();
-//            TestResult testRequest = testRequestUpdateService.updateConsultation(id,testResult,doctor);
             return testRequestUpdateService.updateConsultation(id,testResult,doctor);
 
         } catch (ConstraintViolationException e) {
